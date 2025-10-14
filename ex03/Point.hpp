@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall42@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 18:20:24 by aboumall          #+#    #+#             */
-/*   Updated: 2025/07/09 18:55:18 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/10/14 12:00:53 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ class Point
 		~Point();
 
 		Point &operator=(const Point &other);
-		// operand output
-		friend std::ostream &operator<<(std::ostream &out, const Point &point);
 
 		const Fixed &getX() const;
 		const Fixed &getY() const;
@@ -37,6 +35,7 @@ class Point
 		bool operator==(const Point &other) const;
 };
 
+std::ostream &operator<<(std::ostream &out, const Point &point);
 bool bsp(const Point a, const Point b, const Point c, const Point point);
 
 #endif

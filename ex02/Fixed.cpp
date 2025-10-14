@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall42@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 17:17:54 by aboumall          #+#    #+#             */
-/*   Updated: 2025/07/09 18:14:51 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/10/14 11:59:10 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,40 +34,40 @@ std::ostream &operator<<(std::ostream &out, const Fixed &fixed) {
 }
 
 // Comparison operators
-bool operator>(const Fixed &lhs, const Fixed &rhs) {
-	return lhs._value > rhs._value;
+bool Fixed::operator>(const Fixed &fixed) const {
+	return fixed.toFloat() > fixed.toFloat();
 }
-bool operator<(const Fixed &lhs, const Fixed &rhs) {
-	return lhs._value < rhs._value;
+bool Fixed::operator<(const Fixed &fixed) const {
+	return fixed.toFloat() < fixed.toFloat();
 }
-bool operator>=(const Fixed &lhs, const Fixed &rhs) {
-	return lhs._value >= rhs._value;
+bool Fixed::operator>=(const Fixed &fixed) const {
+	return fixed.toFloat() >=fixed.toFloat();
 }
-bool operator<=(const Fixed &lhs, const Fixed &rhs) {
-	return lhs._value <= rhs._value;
+bool Fixed::operator<=(const Fixed &fixed) const {
+	return fixed.toFloat() <=fixed.toFloat();
 }
-bool operator==(const Fixed &lhs, const Fixed &rhs) {	
-	return lhs._value == rhs._value;
+bool Fixed::operator==(const Fixed &fixed) const {	
+	return fixed.toFloat() ==fixed.toFloat();
 }
-bool operator!=(const Fixed &lhs, const Fixed &rhs) {
-	return lhs._value != rhs._value;
+bool Fixed::operator!=(const Fixed &fixed) const {
+	return fixed.toFloat() !=fixed.toFloat();
 }
 
 // Arithmetic operators
-Fixed operator+(const Fixed &lhs, const Fixed &rhs) {
-	return Fixed(lhs.toFloat() + rhs.toFloat());
+Fixed Fixed::operator+(const Fixed &fixed) const {
+	return Fixed(fixed.toFloat() + this->toFloat());
 }
-Fixed operator-(const Fixed &lhs, const Fixed &rhs) {
-	return Fixed(lhs.toFloat() - rhs.toFloat());
+Fixed Fixed::operator-(const Fixed &fixed) const {
+	return Fixed(fixed.toFloat() - this->toFloat());
 }
-Fixed operator*(const Fixed &lhs, const Fixed &rhs) {
-	return Fixed(lhs.toFloat() * rhs.toFloat());
+Fixed Fixed::operator*(const Fixed &fixed) const {
+	return Fixed(fixed.toFloat() * this->toFloat());
 }
-Fixed operator/(const Fixed &lhs, const Fixed &rhs) {
-	if (rhs._value == 0) {
+Fixed Fixed::operator/(const Fixed &fixed) const {
+	if (this->toFloat() == 0) {
 		throw std::runtime_error("Division by zero");
 	}
-	return Fixed(lhs.toFloat() / rhs.toFloat());
+	return Fixed(fixed.toFloat() / this->toFloat());
 }
 
 // Increment and Decrement operators
@@ -111,11 +111,11 @@ Fixed &Fixed::min(Fixed &a, Fixed &b) {
 	return (a < b) ? a : b;
 }
 const Fixed &Fixed::min(const Fixed &a, const Fixed &b) {
-	return (a < b) ? a : b;
+	return (a.toFloat() < b.toFloat()) ? a : b;
 }
 Fixed &Fixed::max(Fixed &a, Fixed &b) {
 	return (a > b) ? a : b;
 }
 const Fixed &Fixed::max(const Fixed &a, const Fixed &b) {
-	return (a > b) ? a : b;
+	return (a.toFloat() > b.toFloat()) ? a : b;
 }

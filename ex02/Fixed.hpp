@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall42@gmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 17:13:57 by aboumall          #+#    #+#             */
-/*   Updated: 2025/07/09 17:52:24 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/10/14 11:58:44 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,18 @@ class Fixed
 		~Fixed();
 
 		Fixed &operator=(const Fixed &other);
-		friend std::ostream &operator<<(std::ostream &out, const Fixed &fixed);
 		// operand for >, <, >=, <=, ==, !=
-		friend bool operator>(const Fixed &lhs, const Fixed &rhs);
-		friend bool operator<(const Fixed &lhs, const Fixed &rhs);
-		friend bool operator>=(const Fixed &lhs, const Fixed &rhs);
-		friend bool operator<=(const Fixed &lhs, const Fixed &rhs);
-		friend bool operator==(const Fixed &lhs, const Fixed &rhs);
-		friend bool operator!=(const Fixed &lhs, const Fixed &rhs);
+		bool operator>(const Fixed &fixed) const;
+		bool operator<(const Fixed &fixed) const;
+		bool operator>=(const Fixed &fixed) const;
+		bool operator<=(const Fixed &fixed) const;
+		bool operator==(const Fixed &fixed) const;
+		bool operator!=(const Fixed &fixed) const;
 		// operand for +, -, *, /
-		friend Fixed operator+(const Fixed &lhs, const Fixed &rhs);
-		friend Fixed operator-(const Fixed &lhs, const Fixed &rhs);
-		friend Fixed operator*(const Fixed &lhs, const Fixed &rhs);
-		friend Fixed operator/(const Fixed &lhs, const Fixed &rhs);
+		Fixed operator+(const Fixed &fixed) const;
+		Fixed operator-(const Fixed &fixed) const;
+		Fixed operator*(const Fixed &fixed) const;
+		Fixed operator/(const Fixed &fixed) const;
 		// increment and decrement operators
 		Fixed &operator++();
 		Fixed operator++(int);
@@ -59,5 +58,7 @@ class Fixed
 		static Fixed &max(Fixed &a, Fixed &b);
 		static const Fixed &max(const Fixed &a, const Fixed &b);
 };
+
+std::ostream &operator<<(std::ostream &out, const Fixed &fixed);
 
 #endif
